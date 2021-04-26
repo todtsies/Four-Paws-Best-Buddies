@@ -1,7 +1,8 @@
 import React from 'react';
 import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
-import 
 
+import Posts from './components/Posts/Posts';
+import Form from './components/Form/Form';
 import puppy from './images/goldenretriever.jpg';
 
 const App = () => {
