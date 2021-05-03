@@ -62,7 +62,7 @@ const Form = ({ currentId, setCurrentId }) => {
                 
                 <TextField name="service" select variant="outlined" label="Select Service" fullWidth value={postData.service} onChange={(e) => setPostData({ ...postData, service: e.target.value })}   > {services.map((option) => ( <MenuItem key={option.value} value={option.value}> {option.label} </MenuItem> ))} </TextField>
                 
-                <TextField name="breed" variant="outlined" label="Breed" fullWidth value={postData.breed} onChange={(e) => setPostData({ ...postData, breed: e.target.value })} />
+                <TextField name="breed" variant="outlined" label="Breed (no spaces, comma separated)" fullWidth value={postData.breed} onChange={(e) => setPostData({ ...postData, breed: e.target.value.split(',') })} />
                 
                 <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({base64}) => setPostData({ ...postData, selectedFile: base64 })}/></div>
                 
