@@ -1,3 +1,3 @@
-module.exports={
-    CONNECTION_URL:process.env.CONNECTION_URL,   
+module.exports = {
+    MONGODB_URI: process.env.MONGODB_URI,   
 }

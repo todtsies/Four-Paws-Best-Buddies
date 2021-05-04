@@ -6,7 +6,7 @@ import path from 'path';
 // import dotenv from 'dotenv';
 
 import postRoutes from './routes/posts.js'
-import { CONNECTION_URL } from './config/keys.js';
+import { MONGODB_URI } from './config/keys.js';
 
 const app = express();
 // dotenv.config();
@@ -19,12 +19,12 @@ app.use('/posts', postRoutes);
 
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect(CONNECTION_URL,
+mongoose.connect(MONGODB_URI,
     { useNewUrlParser: true,
     useUnifiedTopology: true
     })
     mongoose.connection.on('connected',()=>{
-        console.log('conneted to db')
+        console.log('connected to db')
     })
     mongoose.connection.on('error',(err)=>{
         console.log('err connecting', err)
