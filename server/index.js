@@ -7,6 +7,7 @@ import path from 'path';
 
 import postRoutes from './routes/posts.js'
 // import MONGODB_URI from './config/keys.js';
+const { MONGODB_URI } = require('./config/keys');
 
 const app = express();
 // dotenv.config();
@@ -19,10 +20,6 @@ app.use('/posts', postRoutes);
 
 const PORT = process.env.PORT || 5000;
 
-const MONGODB_URI = 'mongodb+srv://todtsies:Colton123@cluster0.0brkr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
-
-const linkName = process.env.MODE_ENV === 'production'
-
 mongoose.connect(MONGODB_URI,
     { useNewUrlParser: true,
     useUnifiedTopology: true
@@ -34,17 +31,12 @@ mongoose.connect(MONGODB_URI,
         console.log('err connecting', err)
     })
 
-    // if (process.env.MODE_ENV === 'production') {
-    //     module.exports = require('./prod')
-    // } else {
-    //     module.exports = require('./dev')
-    // }
-     if (linkName) {
-         app.use(express.static("client/build"));
-         app.get('*', (req, res) => {
-             res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-         });
-       }
+    if (process.env.NODE_ENV === "production") {
+        app.use(express.static("client/build"));
+        app.get('*', (req, res) => {
+            res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+        });
+      }
 
     app.listen(PORT, () => console.log(`Server is running on port: ${PORT}`))
 // mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
