@@ -6,7 +6,7 @@ import path from 'path';
 // import dotenv from 'dotenv';
 
 import postRoutes from './routes/posts.js'
-import { MONGODB_URI } from './config/keys.js';
+import MONGODB_URI from './config/keys.js';
 
 const app = express();
 // dotenv.config();
