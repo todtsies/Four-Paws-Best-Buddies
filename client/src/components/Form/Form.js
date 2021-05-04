@@ -23,30 +23,29 @@ const services = [
 
 const Form = ({ currentId, setCurrentId }) => {
     const [postData, setPostData] = useState({ creator: '', dogsName: '', message: '', breed: '', service: '', selectedFile: '' });
-    const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
-    const classes = useStyles();
+    const post = useSelector((state) => (currentId ? state.posts.find((message) => message._id === currentId) : null));
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        if(post) setPostData(post);
-    }, [post])
+    const classes = useStyles();
     
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        if(currentId) {
-            dispatch(updatePost(currentId, postData));
-        } else {
-            dispatch(createPost(postData));
-
-        }
-        
-        clear();
-    }
+    useEffect(() => {
+      if (post) setPostData(post);
+    }, [post]);
     
     const clear = () => {
-        setCurrentId(null);
-        setPostData({ creator: '', dogsName: '', message: '', breed: '', service: '', selectedFile: '' })
+        setCurrentId(0);
+        setPostData({ creator: '', dogsName: '', message: '', breed: '', service: '', selectedFile: '' });
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (currentId === 0) {
+            dispatch(createPost(postData));
+            clear();
+        } else {
+            dispatch(updatePost(currentId, postData));
+            clear();
+        }
     }
 
     return (
