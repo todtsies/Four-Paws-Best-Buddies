@@ -10,10 +10,12 @@
     "nodemon": "^2.0.7"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"cd server && npm install && npm start\" \"cd client && npm start\"",
-    "heroku-postbuild": "concurrently \"cd server && npm install && npm start\" \"cd client && npm start\"",
-    "prod": "concurrently \"cd server && npm start\" \"cd client && npm start\""
+    "client-install": "npm install --prefix client",
+    "start": "concurrently \"if-env NODE_ENV=production\" \"cd server && node server.js\" \"cd client && npm run start\"",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
