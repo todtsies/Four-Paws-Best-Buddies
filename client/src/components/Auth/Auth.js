@@ -31,8 +31,8 @@ const Auth = () => {
         console.log(formData);
     };
 
-    const handleChange = () => {
-        setFormData({ ...formData, })
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     const switchMode = () => {
