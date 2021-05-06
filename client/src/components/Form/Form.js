@@ -22,10 +22,11 @@ const services = [
 ];
 
 const Form = ({ currentId, setCurrentId }) => {
-    const [postData, setPostData] = useState({ creator: '', dogsName: '', message: '', breed: '', service: '', selectedFile: '' });
+    const [postData, setPostData] = useState({ dogsName: '', message: '', breed: '', service: '', selectedFile: '' });
     const post = useSelector((state) => (currentId ? state.posts.find((message) => message._id === currentId) : null));
     const dispatch = useDispatch();
     const classes = useStyles();
+    const user = JSON.parse(localStorage.getItem('profile'));
     
     useEffect(() => {
       if (post) setPostData(post);
@@ -33,27 +34,35 @@ const Form = ({ currentId, setCurrentId }) => {
     
     const clear = () => {
         setCurrentId(0);
-        setPostData({ creator: '', dogsName: '', message: '', breed: '', service: '', selectedFile: '' });
+        setPostData({ dogsName: '', message: '', breed: '', service: '', selectedFile: '' });
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (currentId === 0) {
-            dispatch(createPost(postData));
+            dispatch(createPost({ ...postData, name: user?.result?.name }));
             clear();
         } else {
-            dispatch(updatePost(currentId, postData));
+            dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }));
             clear();
         }
+    }
+
+    if(!user?.result?.name) {
+        return (
+            <Paper className={classes.paper}>
+                <Typography variant="h6" align="center">
+                    Please sign in to add your own dog and interact with other posts.
+                </Typography>
+            </Paper>
+        )
     }
 
     return (
         <Paper className={classes.paper}>
             <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
                 <Typography variant="h6">{ currentId ? 'Edit' : 'Add'} your Pup</Typography>
-                
-                <TextField name="creator" variant="outlined" label="Your Name" fullWidth value={postData.creator} onChange={(e) => setPostData({ ...postData, creator: e.target.value })} />
                 
                 <TextField name="dogsName" variant="outlined" label="Dog's Name" fullWidth value={postData.dogsName} onChange={(e) => setPostData({ ...postData, dogsName: e.target.value })} />
                 

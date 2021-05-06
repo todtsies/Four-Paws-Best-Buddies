@@ -41,4 +41,15 @@ export default makeStyles((theme) => ({
     color: theme.palette.getContrastText(deepPurple[500]),
     backgroundColor: deepPurple[500],
   },
+  [theme.breakpoints.down('sm')]: {
+   heading: {
+     fontSize: 22,
+     paddingLeft: '5px',
+   },
+   image:  {
+     marginRight: '5px',
+     marginLeft: "5px",
+     padding: '5px'
+   },
+ }
 }));

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Avatar, Button, Paper, Grid, Typography, Container, TextField } from '@material-ui/core';
+import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Icon from './icon'
@@ -30,9 +30,9 @@ const Auth = () => {
         e.preventDefault();
 
         if(isSignup) {
-            dispatch(signup(formData, history))
+            dispatch(signup(formData, history));
         } else {
-            dispatch(signin(formData, history))
+            dispatch(signin(formData, history));
         }
     };
 
@@ -42,7 +42,7 @@ const Auth = () => {
 
     const switchMode = () => {
         setIsSignup((prevIsSignup) => !prevIsSignup);
-        handleShowPassword(false);
+        setShowPassword(false);
     };
 
     const googleSuccess = async (res) => {

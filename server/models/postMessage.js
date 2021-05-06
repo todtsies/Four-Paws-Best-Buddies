@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const postSchema = mongoose.Schema({
     dogsName: String,
     message: String,
-    creator: String,
+    name: String,
     service: String,
     breed: [String],
     selectedFile: String,
