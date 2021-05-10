@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { TextField, Button, Typography, Paper, MenuItem } from '@material-ui/core';
-import FileBase from 'react-file-base64';
 import { useDispatch, useSelector } from 'react-redux';
+import FileBase from 'react-file-base64';
+import { useHistory } from 'react-router-dom';
 
-import useStyles from './styles';
-import { createPost, updatePost } from '../../actions/posts';
+import { createPost, updatePost } from '../../actions/posts.js';
+import useStyles from './styles.js';
 
 const services = [
     {
@@ -23,10 +24,11 @@ const services = [
 
 const Form = ({ currentId, setCurrentId }) => {
     const [postData, setPostData] = useState({ dogsName: '', message: '', breed: '', service: '', selectedFile: '' });
-    const post = useSelector((state) => (currentId ? state.posts.find((message) => message._id === currentId) : null));
+    const post = useSelector((state) => (currentId ? state.posts.posts.find((message) => message._id === currentId) : null));
     const dispatch = useDispatch();
     const classes = useStyles();
     const user = JSON.parse(localStorage.getItem('profile'));
+    const history = useHistory();
     
     useEffect(() => {
       if (post) setPostData(post);
@@ -35,19 +37,19 @@ const Form = ({ currentId, setCurrentId }) => {
     const clear = () => {
         setCurrentId(0);
         setPostData({ dogsName: '', message: '', breed: '', service: '', selectedFile: '' });
-    }
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (currentId === 0) {
-            dispatch(createPost({ ...postData, name: user?.result?.name }));
+            dispatch(createPost({ ...postData, name: user?.result?.name }, history));
             clear();
         } else {
             dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }));
             clear();
         }
-    }
+    };
 
     if(!user?.result?.name) {
         return (
@@ -56,23 +58,25 @@ const Form = ({ currentId, setCurrentId }) => {
                     Please sign in to add your own dog and interact with other posts.
                 </Typography>
             </Paper>
-        )
+        );
     }
 
     return (
         <Paper className={classes.paper}>
             <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-                <Typography variant="h6">{ currentId ? 'Edit' : 'Add'} your Pup</Typography>
+                <Typography variant="h6">{ currentId ? `Editing "${post.dogsName}"` : 'Add your Pup'}</Typography>
                 
                 <TextField name="dogsName" variant="outlined" label="Dog's Name" fullWidth value={postData.dogsName} onChange={(e) => setPostData({ ...postData, dogsName: e.target.value })} />
                 
-                <TextField name="message" variant="outlined" label="Describe your pup!" fullWidth value={postData.message} onChange={(e) => setPostData({ ...postData, message: e.target.value })} />
+                <TextField name="message" variant="outlined" label="Describe your pup!" fullWidth multiline rows={3} value={postData.message} onChange={(e) => setPostData({ ...postData, message: e.target.value })} />
                 
                 <TextField name="service" select variant="outlined" label="Select Service" fullWidth value={postData.service} onChange={(e) => setPostData({ ...postData, service: e.target.value })}   > {services.map((option) => ( <MenuItem key={option.value} value={option.value}> {option.label} </MenuItem> ))} </TextField>
+                 
+                <TextField name="breed" variant="outlined" label="#Breed (no spaces, comma separated)" fullWidth value={postData.breed} onChange={(e) => setPostData({ ...postData, breed: e.target.value.split(',') })} />
+
+                <Typography variant="caption">Please compress pictures to less than 100KB.</Typography>
                 
-                <TextField name="breed" variant="outlined" label="Breed (no spaces, comma separated)" fullWidth value={postData.breed} onChange={(e) => setPostData({ ...postData, breed: e.target.value.split(',') })} />
-                
-                <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({base64}) => setPostData({ ...postData, selectedFile: base64 })}/></div>
+                <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })}/></div>
                 
                 <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
                
@@ -81,6 +85,6 @@ const Form = ({ currentId, setCurrentId }) => {
             
         </Paper>
     );
-}
+};
 
 export default Form;
