@@ -10,28 +10,51 @@ export default makeStyles((theme) => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '10px 50px',
+    [theme.breakpoints.down('sm')]: {
+      flexWrap: 'wrap',
+      flexDirection: 'column',
+    },
   },
   heading: {
     color: 'rgb(255,218,185)',
-    fontSize: '50px',
     textDecoration: 'none',
+    fontSize: "6vw",
   },
   image: {
     marginLeft: '15px',
+    [theme.breakpoints.down('sm')]: {
+      display: "none",
+    },
   },
   toolbar: {
     display: 'flex',
     justifyContent: 'flex-end',
     width: '400px',
+    [theme.breakpoints.down('sm')]: {
+      width: 'auto',
+    },
   },
   profile: {
     display: 'flex',
     justifyContent: 'space-evenly',
     width: '400px',
+    alignItems: 'center',
+    [theme.breakpoints.down('sm')]: {
+      width: 'auto',
+      marginTop: 10,
+      justifyContent: 'center',
+    },
+  },
+  logout: {
+    marginLeft: '10px',
   },
   userName: {
     display: 'flex',
     alignItems: 'center',
+    textAlign: 'center',
+    [theme.breakpoints.down('sm')]: {
+      marginLeft: '10px',
+    },
   },
   brandContainer: {
     display: 'flex',
@@ -41,15 +64,5 @@ export default makeStyles((theme) => ({
     color: theme.palette.getContrastText(deepPurple[500]),
     backgroundColor: deepPurple[500],
   },
-  [theme.breakpoints.down('sm')]: {
-   heading: {
-     fontSize: 22,
-     paddingLeft: '5px',
-   },
-   image:  {
-     marginRight: '5px',
-     marginLeft: "5px",
-     padding: '5px'
-   },
- }
+  
 }));

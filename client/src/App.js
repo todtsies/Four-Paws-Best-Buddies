@@ -6,6 +6,16 @@ import Home from './components/Home/Home';
 import Navbar from './components/Navbar/Navbar';
 import Auth from './components/Auth/Auth';
 
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: [
+      'Playfair Display',
+      'serif',
+    ].join(','),
+  },});
+
 const App = () => {
     return (
         <BrowserRouter>
