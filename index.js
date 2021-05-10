@@ -1,6 +1,8 @@
 import express from 'express';
-// import bodyParser from 'body-parser';
+import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
+import cors from 'cors';
+
 import { MONGODB_URI } from './config/dev.js';
 import path from 'path';
 // import { dirname } from 'path';
@@ -12,10 +14,9 @@ import userRoutes from './routes/users.js';
 
 const app = express();
 
-
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
-// app.use(cors());
+app.use(cors());
 
 app.use('/posts', postRoutes);
 app.use('/user', userRoutes);
@@ -35,7 +36,7 @@ if (process.env.NODE_ENV === "production") {
       mongoose.connection.on('error',(err)=>{
           console.log('err connecting', err)
       })
-      // mongoose.set('useFindAndModify', false);
+      mongoose.set('useFindAndModify', false);
       
       app.use(express.static("client/build"));
       app.get('*', (req, res) => {
@@ -60,8 +61,6 @@ if (process.env.NODE_ENV === "production") {
 
     app.listen(PORT, () => console.log(`Server is running on port: ${PORT}`))
 
-// mongoose.connect(MONGODB_URI || 'mongodb://localhost/fourpaws', { useNewUrlParser: true, useUnifiedTopology: true })
-//   .then(() => app.listen(PORT, () => console.log(`Server Running on Port: http://localhost:${PORT}`)))
-//   .catch((error) => console.log(`${error} did not connect`));
+
 
 
