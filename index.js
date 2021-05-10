@@ -2,16 +2,19 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import dotenv from 'dotenv';
+
 import { MONGODB_URI } from './config/dev.js';
 import path from 'path';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
 import postRoutes from './routes/posts.js';
 import userRoutes from './routes/users.js';
 
 
 const app = express();
-dotenv.config();
+
+
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
@@ -21,6 +24,8 @@ app.use('/posts', postRoutes);
 app.use('/user', userRoutes);
 
 const PORT = process.env.PORT || 5000;
+
+const __dirname = dirname(fileURLToPath(import.meta.url)); 
 
 if (process.env.NODE_ENV === "production") {
   mongoose.connect(MONGODB_URI,
@@ -41,6 +46,7 @@ if (process.env.NODE_ENV === "production") {
 
       });
     }   
+
     // else {
     //       mongoose.connect(MONGODB_URI,
     //           { useNewUrlParser: true,
@@ -55,7 +61,7 @@ if (process.env.NODE_ENV === "production") {
     //            mongoose.set('useFindAndModify', false);
     //      }
 
-    app.listen(PORT, () => console.log(`Server is running on PORT: http://localhost:${PORT}`))
+    app.listen(PORT, () => console.log(`Server is running on port: ${PORT}`))
 
 // mongoose.connect(MONGODB_URI || 'mongodb://localhost/fourpaws', { useNewUrlParser: true, useUnifiedTopology: true })
 //   .then(() => app.listen(PORT, () => console.log(`Server Running on Port: http://localhost:${PORT}`)))
