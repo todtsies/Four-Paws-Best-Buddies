@@ -1,6 +1,7 @@
 import express from 'express';
-import PostMessage from '../models/postMessage.js'
 import mongoose from 'mongoose';
+
+import PostMessage from '../models/postMessage.js'
 
 const router = express.Router();
 
@@ -74,3 +75,5 @@ export const likePost = async (req, res) => {
 
     res.json(updatedPost);
 }
+
+export default router;
