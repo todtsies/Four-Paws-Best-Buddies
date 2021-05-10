@@ -24,4 +24,4 @@ export default (posts = { isLoading: true, posts: [] }, action) => {
         default:
             return { ...posts, posts };
     }
-}
+};
