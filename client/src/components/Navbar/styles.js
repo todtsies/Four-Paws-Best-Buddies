@@ -19,6 +19,7 @@ export default makeStyles((theme) => ({
     color: 'rgb(255,218,185)',
     textDecoration: 'none',
     fontSize: "4vw",
+    marginTop: '5px',
     [theme.breakpoints.down('sm')]: {
       fontSize: "6vw",
     },
@@ -28,6 +29,7 @@ export default makeStyles((theme) => ({
   },
   image: {
     marginLeft: '15px',
+    borderRadius: "50%",
     [theme.breakpoints.down('sm')]: {
       display: "none",
     },
@@ -71,7 +73,7 @@ export default makeStyles((theme) => ({
     color: theme.palette.getContrastText(deepPurple[500]),
     backgroundColor: deepPurple[500],
   },
-  signin: {
+  signInButton: {
     paddingTop: "10px",
   }
   
