@@ -9,7 +9,7 @@ import path from 'path';
 // import { fileURLToPath } from 'url';
 
 import postRoutes from './routes/posts.js';
-import userRoutes from './routes/users.js';
+import userRoutes from './routes/user.js';
 
 const app = express();
 
