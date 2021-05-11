@@ -31,9 +31,10 @@ const Form = ({ currentId, setCurrentId }) => {
     const history = useHistory();
     
     useEffect(() => {
-      if (post) setPostData(post);
-    }, [post]);
-    
+        if (!post?.dogsName) clear();
+        if (post) setPostData(post);
+      }, [post]);
+
     const clear = () => {
         setCurrentId(0);
         setPostData({ dogsName: '', message: '', breed: '', service: '', selectedFile: '' });
@@ -74,7 +75,7 @@ const Form = ({ currentId, setCurrentId }) => {
                  
                 <TextField className={classes.breed} name="breed" variant="outlined" label="#Breed (no spaces, comma separated)" fullWidth value={postData.breed} onChange={(e) => setPostData({ ...postData, breed: e.target.value.split(',') })} />
 
-                <Typography variant="caption">Please compress images to less than 100KB before upload.</Typography>
+                <Typography align="center" variant="caption">Please compress images to less than 100KB before upload.</Typography>
                 
                 <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })}/></div>
                 
