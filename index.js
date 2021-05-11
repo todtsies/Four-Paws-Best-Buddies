@@ -44,19 +44,19 @@ if (process.env.NODE_ENV === "production") {
       });
     }   
 
-     else {
-        mongoose.connect(MONGODB_URI,
-               { useNewUrlParser: true,
-               useUnifiedTopology: true
-               })
-               mongoose.connection.on('connected',()=>{
-                   console.log('connected to db')
-               })
-               mongoose.connection.on('error',(err)=>{
-                   console.log('err connecting', err)
-               })
-               mongoose.set('useFindAndModify', false);
-         }
+    //  else {
+    //     mongoose.connect(MONGODB_URI,
+    //            { useNewUrlParser: true,
+    //            useUnifiedTopology: true
+    //            })
+    //            mongoose.connection.on('connected',()=>{
+    //                console.log('connected to db')
+    //            })
+    //            mongoose.connection.on('error',(err)=>{
+    //                console.log('err connecting', err)
+    //            })
+    //            mongoose.set('useFindAndModify', false);
+    //      }
 
     app.listen(PORT, () => console.log(`Server is running on port: ${PORT}`))
 
