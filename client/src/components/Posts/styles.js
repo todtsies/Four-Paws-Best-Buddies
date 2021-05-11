@@ -47,6 +47,9 @@ export default makeStyles((theme) => ({
   noPostsMessage: {
     fontFamily: "'Newsreader', serif",
     justifyContent: 'center',
+    width: '600px',
+    marginRight: '5px',
+    
   },
   [theme.breakpoints.down('sm')]: {
     appBar: {
@@ -65,6 +68,13 @@ export default makeStyles((theme) => ({
       display: 'flex',
       justifyContent: 'flex-end',
       width: '160px',
+    },
+    noPostsMessage: {
+      width: '300px',
+      justifyContent: 'center',
+      marginLeft: '-5px',   
+      marginTop: '20px',
+      marginBottom: '0',
     },
   },
 

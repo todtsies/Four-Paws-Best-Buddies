@@ -13,7 +13,7 @@ const Posts = ({ setCurrentId }) => {
 
   if (!posts.length && !isLoading) {
     return (
-      <Paper className={classes.noPostsMessage} >
+      <Paper variant='outlined' className={classes.noPostsMessage} >
         <h1 align="center" style={{ color: 'black', fontWeight: "100" }}>Sorry <SentimentVeryDissatisfiedIcon fontSize="default" /> No dogs to see here right now.</h1>
       </Paper>
     )
