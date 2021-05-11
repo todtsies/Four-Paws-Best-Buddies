@@ -21,4 +21,9 @@ export default makeStyles((theme) => ({
   buttonSubmit: {
     marginBottom: 10,
   },
+  breed: {
+    [theme.breakpoints.down('sm', 'xs')]: {
+    paddingTop: "5px",
+    },
+  }
 }));

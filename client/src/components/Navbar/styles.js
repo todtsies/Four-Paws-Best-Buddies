@@ -18,7 +18,13 @@ export default makeStyles((theme) => ({
   heading: {
     color: 'rgb(255,218,185)',
     textDecoration: 'none',
-    fontSize: "6vw",
+    fontSize: "4vw",
+    [theme.breakpoints.down('sm')]: {
+      fontSize: "6vw",
+    },
+    [theme.breakpoints.down('xs')]: {
+      fontSize: "5.8vw"
+    }
   },
   image: {
     marginLeft: '15px',
@@ -46,14 +52,15 @@ export default makeStyles((theme) => ({
     },
   },
   logout: {
-    marginLeft: '10px',
+    marginLeft: '15px',
+    paddingTop: '10px',
   },
   userName: {
     display: 'flex',
     alignItems: 'center',
     textAlign: 'center',
     [theme.breakpoints.down('sm')]: {
-      marginLeft: '10px',
+      marginLeft: '12px',
     },
   },
   brandContainer: {
@@ -64,5 +71,8 @@ export default makeStyles((theme) => ({
     color: theme.palette.getContrastText(deepPurple[500]),
     backgroundColor: deepPurple[500],
   },
+  signin: {
+    paddingTop: "10px",
+  }
   
 }));

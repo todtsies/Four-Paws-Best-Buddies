@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { useHistory } from 'react-router-dom';
 
-import { getPosts, getPostsBySearch } from '../../actions/posts.js';
+import { getPosts, getPostsBySearch } from '../../actions/posts';
 import useStyles from './styles';
 import Posts from '../Posts/Posts';
 import Form from '../Form/Form';
