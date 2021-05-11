@@ -48,31 +48,33 @@ const Post = ({ post, setCurrentId }) => {
                     <Typography variant="h6">{post.name}</Typography>
                     <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
                 </div>
-
-                {(user?.result?.googleId === post?.name || user?.result?._id === post?.name) && (
-                    <div className={classes.overlay2}>
-                        <Button style={{ color: 'white' }} size="small" onClick={() => setCurrentId(post._id)}>
-                            <MoreHorizIcon fontSize="default" />
-                        </Button>
-                    </div>
-                )}
-
-                <div className={classes.details}>
-                    <Typography variant="body2" color="textSecondary">{post.breed.map((breed) => `#${breed} `)}</Typography>
-                    <Typography variant="body2">{post.service}</Typography>
-                </div>
-                <Typography className={classes.title} variant="h5" component="h2" >{post.dogsName}</Typography>
-
-                <CardContent>
-                    <Typography variant="body2" color="textSecondary" component="p">{post.message}</Typography>
-                </CardContent>
             </ButtonBase>
+            {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
+                <div className={classes.overlay2}>
+                    <Button style={{ color: 'white' }} size="small" onClick={(e) => {
+                        e.stopPropagation();
+                        setCurrentId(post._id);
+                    }}>
+                        <MoreHorizIcon fontSize="default" />
+                    </Button>
+                </div>
+            )}
+
+            <div className={classes.details}>
+                <Typography variant="body2" color="textSecondary">{post.breed.map((breed) => `#${breed} `)}</Typography>
+                <Typography variant="body2">{post.service}</Typography>
+            </div>
+            <Typography className={classes.title} variant="h5" component="h2" >{post.dogsName}</Typography>
+
+            <CardContent>
+                <Typography variant="body2" color="textSecondary" component="p">{post.message}</Typography>
+            </CardContent>
             <CardActions className={classes.cardActions}>
                 <Button size="small" color="primary" disabled={!user?.result} onClick={() => dispatch(likePost(post._id))}>
                     <Likes />
                 </Button>
 
-                {(user?.result?.googleId === post?.name || user?.result?._id === post?.name) && (
+                {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
                     <Button size="small" color="secondary" onClick={() => dispatch(deletePost(post._id))}>
                         <DeleteIcon fontSize="small" /> Delete
                     </Button>

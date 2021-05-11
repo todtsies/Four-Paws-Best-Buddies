@@ -4,6 +4,7 @@ const postSchema = mongoose.Schema({
     dogsName: String,
     message: String,
     name: String,
+    creator: String,
     service: String,
     breed: [String],
     selectedFile: String,

@@ -7,7 +7,7 @@ export default makeStyles((theme) => ({
     margin: '30px 0',
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
     padding: '10px 50px',
     [theme.breakpoints.down('sm')]: {
@@ -24,13 +24,13 @@ export default makeStyles((theme) => ({
       fontSize: "6vw",
     },
     [theme.breakpoints.down('xs')]: {
-      fontSize: "5.8vw"
-    }
+      fontSize: "5.9vw",
+    },
   },
   image: {
     marginLeft: '15px',
     borderRadius: "50%",
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('sm', 'xs')]: {
       display: "none",
     },
   },

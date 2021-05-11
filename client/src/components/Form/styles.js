@@ -22,8 +22,7 @@ export default makeStyles((theme) => ({
     marginBottom: 10,
   },
   breed: {
-    [theme.breakpoints.down('sm', 'xs')]: {
-    paddingTop: "5px",
+    paddingBottom: "20px",
     },
-  }
 }));
+
