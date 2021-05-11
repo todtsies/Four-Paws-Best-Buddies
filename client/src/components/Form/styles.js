@@ -23,6 +23,9 @@ export default makeStyles((theme) => ({
   },
   breed: {
     paddingBottom: "20px",
+    [theme.breakpoints.down('sm', 'xs')]: {
+      paddingBottom: "20px",
+    },
     },
 }));
 

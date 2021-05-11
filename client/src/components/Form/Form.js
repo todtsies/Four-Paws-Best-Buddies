@@ -4,8 +4,6 @@ import { TextField, Button, Typography, Paper, MenuItem } from '@material-ui/cor
 import { useDispatch, useSelector } from 'react-redux';
 import FileBase from 'react-file-base64';
 import { useHistory } from 'react-router-dom';
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
 
 import { createPost, updatePost } from '../../actions/posts.js';
 import useStyles from './styles.js';
@@ -65,13 +63,7 @@ const Form = ({ currentId, setCurrentId }) => {
         );
     };
 
-    const theme = createMuiTheme({
-        typography: {
-          caption: {
-            fontSize: "0.5rem",
-            paddingTop: '-5px',
-          }}});
-
+   
     return (
         <Paper className={classes.paper}>
             <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
@@ -84,9 +76,9 @@ const Form = ({ currentId, setCurrentId }) => {
                 <TextField name="service" select variant="outlined" label="Select Service" fullWidth value={postData.service} onChange={(e) => setPostData({ ...postData, service: e.target.value })}   > {services.map((option) => ( <MenuItem key={option.value} value={option.value}> {option.label} </MenuItem> ))} </TextField>
                  
                 <TextField className={classes.breed} name="breed" variant="outlined" label="#Breed (no spaces, comma separated)" fullWidth value={postData.breed} onChange={(e) => setPostData({ ...postData, breed: e.target.value.split(',') })} />
-            <ThemeProvider theme={theme}>
+            
                 <Typography align="center" variant="caption">Please compress images to less than 100KB before upload.</Typography>
-            </ThemeProvider>
+            
                 <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })}/></div>
                 
                 <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>

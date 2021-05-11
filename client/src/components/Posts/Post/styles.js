@@ -26,6 +26,7 @@ export default makeStyles({
     top: '20px',
     left: '20px',
     color: 'white',
+    opacity: 0.7,
   },
   overlay2: {
     position: 'absolute',
@@ -53,4 +54,5 @@ export default makeStyles({
     display: 'block',
     textAlign: 'initial',
   },
+  
 });
