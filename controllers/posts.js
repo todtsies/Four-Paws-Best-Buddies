@@ -18,7 +18,7 @@ export const getPosts = async (req, res) => {
 
 export const getPostsBySearch = async (req, res) => {
     const { searchQuery } = req.query;
-
+        
     try {
         const dogsName = new RegExp(searchQuery, "i");
     

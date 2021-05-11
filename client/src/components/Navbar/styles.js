@@ -16,7 +16,7 @@ export default makeStyles((theme) => ({
     },
   },
   heading: {
-    color: 'rgb(255,218,185)',
+    color: 'rgb(230,200,185)',
     textDecoration: 'none',
     fontSize: "4vw",
     marginTop: '5px',
@@ -61,6 +61,8 @@ export default makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     textAlign: 'center',
+    marginLeft: '10px',
+    lineHeight: 1,
     [theme.breakpoints.down('sm')]: {
       marginLeft: '12px',
     },
