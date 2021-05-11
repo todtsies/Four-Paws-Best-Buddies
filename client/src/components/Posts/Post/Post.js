@@ -30,6 +30,7 @@ const Post = ({ post, setCurrentId }) => {
         return <><ThumbUpAltOutlined fontSize="small" />&nbsp;Like</>;
     };
 
+
     return (
         <Card className={classes.card}>
             <CardMedia className={classes.media} image={post.selectedFile} title={post.title} />
@@ -38,7 +39,7 @@ const Post = ({ post, setCurrentId }) => {
                 <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
             </div>
 
-            {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
+            {(user?.result?.googleId === post?.name || user?.result?._id === post?.name) && (
                 <div className={classes.overlay2}>
                     <Button style={{ color: 'white' }} size="small" onClick={() => setCurrentId(post._id)}>
                         <MoreHorizIcon fontSize="default" />
@@ -60,7 +61,7 @@ const Post = ({ post, setCurrentId }) => {
                     <Likes />
                 </Button>
 
-                {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
+                {(user?.result?.googleId === post?.name || user?.result?._id === post?.name) && (
                     <Button size="small" color="secondary" onClick={() => dispatch(deletePost(post._id))}>
                         <DeleteIcon fontSize="small" /> Delete
                     </Button>

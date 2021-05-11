@@ -37,6 +37,8 @@ const Navbar = () => {
      // eslint-disable-next-line react-hooks/exhaustive-deps
      }, [location])
 
+     
+
     return (
         <AppBar className={classes.appBar} position="static" color="inherit">
             <div className={classes.brandContainer}>

@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
+
 import Icon from './icon.js'
 import { signin, signup } from '../../actions/auth.js';
 import { AUTH } from '../../constants/actionTypes.js';
@@ -78,6 +79,7 @@ const SignUp = () => {
                     </Grid>
                     <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
                         { isSignup ? 'Sign Up' : 'Sign In' }
+                        
                     </Button>
                     <GoogleLogin
                         clientId="964966907876-fhl0fq6hpode9bh5q47jb1hg43vh7jv9.apps.googleusercontent.com"
