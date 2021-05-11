@@ -54,7 +54,7 @@ const SignUp = () => {
         }
     };
 
-    const googleError = (error) => console.log("Google Sign in was unsuccessful. Try again later.");
+    const googleError = () => console.log("Google Sign in was unsuccessful. Try again later.");
 
     const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
