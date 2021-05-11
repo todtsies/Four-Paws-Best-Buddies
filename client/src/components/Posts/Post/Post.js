@@ -39,7 +39,7 @@ const Post = ({ post, setCurrentId }) => {
     return (
         <Card className={classes.card}>
             <ButtonBase
-                name="openImage"
+                name="enlargeImage"
                 className={classes.cardAction}
                 onClick={openPost}
             >
