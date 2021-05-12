@@ -14,17 +14,23 @@ export default makeStyles((theme) => ({
     flexWrap: 'wrap',
     justifyContent: 'center',
   },
+  caption: {
+    paddingTop: '-20px',
+  },
   fileInput: {
     width: '97%',
     margin: '10px 0',
+    paddingTop: '10px',
   },
   buttonSubmit: {
     marginBottom: 10,
   },
   breed: {
     paddingBottom: "20px",
+    paddingRight: '-6px',
+    paddingLeft: '-6px',
     [theme.breakpoints.down('sm', 'xs')]: {
-      paddingBottom: "20px",
+      fontSize: '5px',
     },
     },
 }));

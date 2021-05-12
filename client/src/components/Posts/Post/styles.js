@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export default makeStyles({
+export default makeStyles((theme) => ({
   media: {
     height: 0,
     paddingTop: '56.25%',
@@ -22,9 +22,12 @@ export default makeStyles({
   },
   overlay: {
     position: 'absolute',
-    top: '20px',
-    left: '20px',
+    top: '10px',
+    left: '10px',
     color: 'white',
+    [theme.breakpoints.down('sm','xs')]: {
+      fontSize: "small",
+    },
   },
   overlay2: {
     position: 'absolute',
@@ -52,5 +55,4 @@ export default makeStyles({
     display: 'block',
     textAlign: 'initial',
   },
-  
-});
+}));

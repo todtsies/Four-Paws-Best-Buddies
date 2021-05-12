@@ -17,20 +17,19 @@ const Post = ({ post, setCurrentId }) => {
     const classes = useStyles();
     const user = JSON.parse(localStorage.getItem('profile'));
     const history = useHistory();
-    const array = [post.likes];
+    
     const Likes = () => {
-        if (array.length > 0) {
-            console.log(array.length ? array.length : 'array is null or undefined');
-
-            return array.find((like) => like === (user?.result?.googleId || user?.result?._id))
-                ? (
-                    <><ThumbUpAltIcon fontSize="small" />&nbsp;{array.length > 2 ? `You and ${array.length - 1} others` : `${array.length} like${array.length > 1 ? 's' : ''}`}</>
-                ) : (
-                    <><ThumbUpAltOutlined fontSize="small" />&nbsp;{array.length} {array.length === 1 ? 'Like' : 'Likes'}</>
-                );
+        if (post?.likes?.length > 0) {
+          return post.likes.find((like) => like === (user?.result?.googleId || user?.result?._id))
+            ? (
+              <><ThumbUpAltIcon fontSize="small" />&nbsp;{post.likes.length > 2 ? `You and ${post.likes.length - 1} others` : `${post.likes.length} like${post.likes.length > 1 ? 's' : ''}` }</>
+            ) : (
+              <><ThumbUpAltOutlined fontSize="small" />&nbsp;{post.likes.length} {post.likes.length === 1 ? 'Like' : 'Likes'}</>
+            );
         }
+    
         return <><ThumbUpAltOutlined fontSize="small" />&nbsp;Like</>;
-    };
+      };
 
     const theme = createMuiTheme({
         overrides: {

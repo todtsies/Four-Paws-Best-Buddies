@@ -93,7 +93,7 @@ const SignUp = () => {
                     <Grid container justify="flex-end">
                         <Grid item>
                             <Button onClick={switchMode}>
-                                { isSignup ? 'Already have an account? Sign in' : "Don't have an account? Sign up! Or go ahead and sign in with Google" }
+                                { isSignup ? 'Already have an account? Sign in' : "Don't have an account? Click here to sign up with your email address" }
                             </Button>
                         </Grid>
                     </Grid>
