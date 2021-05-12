@@ -13,6 +13,7 @@ export default makeStyles((theme) => ({
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
+    borderRadius: 4,
   },
   caption: {
     paddingTop: '-20px',

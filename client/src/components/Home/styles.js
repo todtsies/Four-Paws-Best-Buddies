@@ -14,7 +14,7 @@ export default makeStyles((theme) => ({
     },
     pagination: {
         borderRadius: 4,
-        marginTop: '3.5rem',
+        marginTop: '2rem',
         padding: '16px',
     [theme.breakpoints.down('xs')]: {
         flexDirection: 'column',

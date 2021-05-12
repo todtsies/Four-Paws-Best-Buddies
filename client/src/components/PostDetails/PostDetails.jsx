@@ -25,8 +25,8 @@ const PostDetails = () => {
     return (
         <div>
             <img className={classes.media} src={post.selectedFile} alt={post.selectedFile} />
-            <Button className={classes.closeButton} component={Link} to="/posts" variant="contained" style={{ color: 'black' }}>
-                <CancelIcon fontSize="default" />
+            <Button className={classes.closeButton} component={Link} to="/posts" variant="text" style={{ color: 'black' }}>
+                <CancelIcon fontSize="small" />
             </Button>
         </div>
     );

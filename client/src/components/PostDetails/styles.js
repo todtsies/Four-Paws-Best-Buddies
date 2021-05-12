@@ -11,7 +11,7 @@ export default makeStyles({
   closeButton: {
     position: 'absolute',
     top: "20%",
-    right: '20%',
+    right: '15%',
     color: 'black',
   },
   
