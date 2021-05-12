@@ -6,6 +6,13 @@ export default makeStyles({
     marginLeft: 'auto',
     marginRight: 'auto',
     width: '70%',
+    border: "1",
+  },
+  closeButton: {
+    position: 'absolute',
+    top: "20%",
+    right: '20%',
+    color: 'black',
   },
   
 });

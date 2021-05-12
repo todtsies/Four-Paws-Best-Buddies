@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 const API = '/posts';
 
 axios.interceptors.request.use((req) => {

@@ -10,7 +10,9 @@ import Auth from './components/Auth/Auth';
 import PostDetails from './components/PostDetails/PostDetails';
 
 const App = () => {
-
+    window.onbeforeunload = function () {
+        window.scrollTo(0, 0);
+      }
     const font = "'Newsreader', serif";
     const theme = createMuiTheme({
         typography: {
