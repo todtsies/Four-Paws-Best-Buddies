@@ -16,7 +16,7 @@
 
   
   ## Description
-  Four Paw’s Best Buddies is an social media application that allows users to view the dogs that come to Four Paw Bed & Biscuit. The user is able to create an account with their email/password or login with Google. From there, they will be able to create posts about their dogs and their experiences at Four Paw B&B, like other posts that other people have created, update their posts, delete their posts, and search for dogs by their name. I made an easy to maneuver interface that anybody of any age could use and enjoy. I want our clients to know we care care about their dogs just as much as they do!
+  Four Paw’s Best Buddies is an social media application that allows users to view the dogs that come to our daycare/boarding/grooming facility. The user is able to create an account with their email/password or log in with Google. From there, they will be able to create posts about their dogs and their experiences at Four Paw B&B, like other posts that other people have created, update their posts, delete their posts, and search for dogs by the dog's name. I created a simple and fun mobile responsive interface that anybody of any age could use and enjoy.
 
   ## Demo
 
@@ -24,7 +24,31 @@
   
  
   ## Usage
-  To launch the application, please visit this link to Heroku - https://fourpawsbestbuddies.herokuapp.com/
+  To create your own social media app, first you must copy and paste your own MongoDB database link in the **config/dev.js** file. Then, open your terminal in the root directory and run:
+  ```
+  npm i
+  ```
+  Then open a second terminal in the root directory and run:
+  ```
+  cd client
+  ```
+  and then:
+  ```
+  npm i
+  ```
+  After you have all of the necessary dependencies installed, you should be ready to go! Still in the root directory of the first terminal, run:
+  ```
+  npm start
+  ```
+  In the second terminal you should still be in the client folder. Please run:
+  ```
+  npm start
+  ```
+
+
+
+
+  To launch this application, please visit this link to Heroku - [Four Paw's Best Buddies](https://fourpawsbestbuddies.herokuapp.com/)
   
 
   ## Contributors
@@ -40,7 +64,8 @@
       
 
   ## Technologies
-  React, Redux, Moment.js, Axios, Javascript, Google Fonts, @Material-UI, Node.js, Express, Mongoose, Javascript, JSON Web Tokens, bcrypt
+  Front End - React, Redux, Moment.js, Axios, Javascript, Google Fonts, @Material-UI
+  Back End - Node.js, Express, Mongoose, Javascript, JSON Web Tokens, bcrypt
 
 
   ## Questions
