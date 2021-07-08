@@ -42,7 +42,9 @@ const Navbar = () => {
     return (
         <AppBar className={classes.appBar} position="static" color="inherit">
             <div className={classes.brandContainer}>
-                <Typography component={Link} to="/" className={classes.heading} variant="h2" align="center">Four Paw's Best Buddies</Typography>
+                <Typography component={Link} to="/" className={classes.heading} variant="h2" align="center">Four Paw's Best Buddies{'\n'}<Typography className={classes.subheading}>Meet your dog's four-legged friends!</Typography></Typography>
+                
+
                 <img className={classes.image} src={puppy} alt="dog" height="60" />
             </div>
             <Toolbar className={classes.toolbar}>

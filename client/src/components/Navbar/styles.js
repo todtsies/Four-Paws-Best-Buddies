@@ -15,6 +15,13 @@ export default makeStyles((theme) => ({
       flexDirection: 'column',
     },
   },
+  subheading: {
+    color: 'black',
+    marginTop: '0px',
+    letterSpacing: '.25rem',
+    display: 'block',
+  },
+
   heading: {
     color: 'rgb(230,200,185)',
     textDecoration: 'none',

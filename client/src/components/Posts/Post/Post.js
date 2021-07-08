@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 import { getPost, deletePost, likePost } from '../../../actions/posts'
 import { useHistory } from 'react-router-dom';
 import useStyles from './styles';
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 
 const Post = ({ post, setCurrentId }) => {
@@ -31,13 +31,20 @@ const Post = ({ post, setCurrentId }) => {
         return <><ThumbUpAltOutlined fontSize="small" />&nbsp;Like</>;
       };
 
-    const theme = createMuiTheme({
+    const theme = createTheme({
         overrides: {
             overlay: {
                 opacity: 0.5,
             }
         }
     });
+
+    const scrollToEdit = () => {
+        window.scrollTo({
+          top: 280,
+          behavior: "smooth"
+        });
+      };
 
     const openPost = () => {
         dispatch(getPost(post.selectedFile));
@@ -59,11 +66,11 @@ const Post = ({ post, setCurrentId }) => {
                         <Typography fontWeight="fontWeightLight" variant="body2">{moment(post.createdAt).fromNow()}</Typography>
                     </div>
                 </ThemeProvider>
-            </ButtonBase>
             {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
                 <div className={classes.overlay2}>
                     <Button style={{ color: 'white' }} size="small" onClick={(e) => {
                         e.stopPropagation();
+                        scrollToEdit();
                         setCurrentId(post._id);
                     }}>
                         <MoreHorizIcon fontSize="default" />
@@ -80,6 +87,7 @@ const Post = ({ post, setCurrentId }) => {
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">{post.message}</Typography>
             </CardContent>
+            </ButtonBase>
             <CardActions className={classes.cardActions}>
                 <Button size="small" color="primary" disabled={!user?.result} onClick={() => dispatch(likePost(post._id))}>
                     <Likes />
