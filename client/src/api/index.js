@@ -15,6 +15,7 @@ export const fetchPosts = (page) => axios.get(`${API}?page=${page}`);
 export const fetchPostsBySearch = (searchQuery) => axios.get(`${API}/search?searchQuery=${searchQuery}`);
 export const createPost = (newPost) => axios.post(`${API}`, newPost);
 export const likePost = (id) => axios.patch(`${API}/${id}/likePost`);
+export const comment = (value, id) => axios.post(`${API}/${id}/commentPost`, { value });
 export const updatePost = (id, updatedPost) => axios.patch(`${API}/${id}`, updatedPost);
 export const deletePost = (id) => axios.delete(`${API}/${id}`);
 
